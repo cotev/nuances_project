@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}story.title{% endblock %}
+
+{% block content %}
+
+    <h1 class="title">{{ story.title }}</h1>	
+    {% for page in pages %}
+        <p class="page">
+	    <img src="{{ page.page.url }}"/>
+	</p>
+    {% endfor %}
+    <p>
+        <a class="comment_story" href="{% url 'comment_story' story.title %}">Comment</a>
+    </p>
+
+{% endblock %}

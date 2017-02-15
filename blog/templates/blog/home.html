@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'style_hone.css' %}"/>
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+{%for news in list_news %}
+    <p class="news">
+            <span class="news_title">{{ news.title }}</span>
+            <span class="news_date"> {{ news.date }} </span>
+            <span class="news_message">{{ news.message }} </span>
+    </p>
+{% endfor  %} 
+{% endblock %}
