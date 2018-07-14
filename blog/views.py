@@ -13,6 +13,7 @@ from blog.forms import ContactForm
 from blog.forms import CommentForm
 from blog.forms import SketchCommentForm
 from blog.models import Comment
+from blog.models import ItemCommonInfo
 
 
 def view_home(request):
@@ -104,12 +105,21 @@ def view_comment(request,id_title, id_comment_type):
         return render(request, 'blog/comment.html', locals())
 
 
-#def view_sketch_comment(request,id_title):
-def view_sketch_comment(request):
+def view_sketch_comment(request, id_type, id_title):
+#def view_sketch_comment(request, id_title):
+#def view_sketch_comment(request):
     form = SketchCommentForm(request.POST or None)
     #Instruction needed for the block which manages
     #the redirect, at the end of view_comment
     bool_sent = False
+
+#   We figure out what kind of item we comment
+    if id_type == "Sketch":
+         item_instance = Sketch()
+    item = item_instance.objects.get(title=id_title)
+#   item = Sketch.objects.get(title=id_title)
+#   item = Sketch.objects.get(title=id_title)
+
     if form.is_valid():
         comment = form.save(commit=False)
         comment.save()

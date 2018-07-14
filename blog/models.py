@@ -5,6 +5,7 @@ class ItemCommonInfo(models.Model):
     title = models.CharField(max_length=100)
     author = models.CharField(max_length=30)
     date = models.DateTimeField(auto_now_add=True, auto_now=False, verbose_name="Date")
+    type = ""
     comments_list = []
 #    def add_sketch_comment(author, message, date):
 #        comment = SketchComment(author=author, message=message, date=date)
@@ -28,6 +29,7 @@ class SketchComment(models.Model):
 class Sketch(ItemCommonInfo):
     date = models.DateTimeField(auto_now_add=True, auto_now=False, verbose_name="Date of sketch")
     sketch = models.ImageField(upload_to="sketches/")
+    type = "Sketch"
     #I just wonder if we can instance several SketchComment for 
     #one instance of Sketch.
 #   comment() = SketchComment()
