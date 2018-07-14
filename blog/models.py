@@ -9,8 +9,9 @@ class ItemCommonInfo(models.Model):
         abstract = True
 
 
-class Story(ItemCommonInfo):
-
+class Story(models.Model):
+    title = models.CharField(max_length=100)
+    author = models.CharField(max_length=30)
     date = models.DateTimeField(auto_now_add=True, auto_now=False, verbose_name="Date of publication")
     cover_page = models.ImageField(upload_to="covers/")
 
@@ -19,8 +20,7 @@ class Story(ItemCommonInfo):
 
 
 class StoryPage(models.Model):
-
-    page_number = models.IntegerField(default=0) 
+    page_number = models.IntegerField(default=0)
     page_title = models.CharField(max_length=100)
     page = models.ImageField(upload_to="pages/")
     story = models.ForeignKey('Story',null=True, on_delete=models.CASCADE,)
@@ -29,10 +29,7 @@ class StoryPage(models.Model):
         return self.page_title
 
 
-class Sketch(models.Model):
-
-    title = models.CharField(max_length=100)
-    author = models.CharField(max_length=30)
+class Sketch(ItemCommonInfo):
     date = models.DateTimeField(auto_now_add=True, auto_now=False, verbose_name="Date of sketch")
     sketch = models.ImageField(upload_to="sketches/")
 
@@ -41,7 +38,6 @@ class Sketch(models.Model):
 
 
 class Contact(models.Model):
-
     author = models.CharField(max_length=100)
     message = models.TextField(blank=False)
     email = models.EmailField()
@@ -52,7 +48,6 @@ class Contact(models.Model):
 
 
 class Comment(models.Model):
-
     author = models.CharField(max_length=100, default='Anonymous')
     message = models.TextField(blank=False)
     date = models.DateTimeField(auto_now_add=True, auto_now=False, verbose_name="Date of comment")
