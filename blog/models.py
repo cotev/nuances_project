@@ -1,10 +1,16 @@
 from django.db import models
 
+class ItemCommonInfo(models.Model):
+    title = models.CharField(max_length=100)
+    author = models.CharField(max_length=30)
+    date = models.DateTimeField(auto_now_add=True, auto_now=False, verbose_name="Date")
 
-class Story(models.Model):
+    class Meta:
+        abstract = True
 
-    title = models.CharField(max_length=100) 
-    author = models.CharField(max_length=30) 
+
+class Story(ItemCommonInfo):
+
     date = models.DateTimeField(auto_now_add=True, auto_now=False, verbose_name="Date of publication")
     cover_page = models.ImageField(upload_to="covers/")
 

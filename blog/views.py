@@ -60,7 +60,7 @@ def view_show_story(request, id_title):
     #This view find a story in the data base, using id_story and show the page show_story.html
 
     #ToDo : what happends when the title isn't right ? ==> make sure that can't happend.
-    story = Story.objects.get(title=id_title)    
+    story = Story.objects.get(title=id_title)
     pages = story.storypage_set.all() #REMARQUE : they must not have capitals before the _set
     
     return render(request, 'blog/show_story.html', {
@@ -86,7 +86,7 @@ def view_comment(request,id_title, id_comment_type):
     elif id_comment_type == 'sketch':
         sketch = Sketch.objects.get(title=id_title)
         list_comments = sketch.comment_set.all()
-        bool_sketch_comment = True  
+        bool_sketch_comment = True
         if form.is_valid():
             comment = form.save(commit=False)
             comment.sketch = sketch
