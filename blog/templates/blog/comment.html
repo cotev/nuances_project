@@ -17,7 +17,7 @@
             <input type="submit" value="Submit" />
         </form>
     <p class="title">Comments</p>
-    {% for comment in list_comments %}
+    {% for comment in comment_list %}
         <div class="comment">
             {% comment %}   <p id="comment_author">{{ comment.author }} : </p><p id="comment_message">{{ comment.message }}</p> {% endcomment %}
         <p class="comment_author">{{ comment.author }} :</p>

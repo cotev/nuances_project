@@ -7,6 +7,9 @@ class ItemCommonInfo(models.Model):
     date = models.DateTimeField(auto_now_add=True, auto_now=False, verbose_name="Date")
     type = ""
     comments_list = []
+    def save_comment(comment):
+        self.comments_list.append(comment)
+
 #    def add_sketch_comment(author, message, date):
 #        comment = SketchComment(author=author, message=message, date=date)
 #        return comment

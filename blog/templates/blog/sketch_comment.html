@@ -20,14 +20,12 @@
     </form>
     {% endcomment %}
 
-{% comment %}
     <p class="title">Comments</p>
-    {% for comment in list_comments %}
+    {% for comment in comments_list %}
         <div class="comment">
         	<p class="comment_author">{{ comment.author }} :</p>
 		<p class="comment_message">{{ comment.message }}</p>
     	</div>
     {% endfor %}
 
-{% endcomment %}
 {% endblock %}

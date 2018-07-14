@@ -115,14 +115,21 @@ def view_sketch_comment(request, id_type, id_title):
 
 #   We figure out what kind of item we comment
     if id_type == "Sketch":
-         item_instance = Sketch()
-    item = item_instance.objects.get(title=id_title)
+         item = Sketch.objects.get(title=id_title)
+         url_template = 'blog/sketch_comment.html'
+         comments_list = item.comments_list
+
+#   item = item_instance.objects.get(title=id_title)
 #   item = Sketch.objects.get(title=id_title)
 #   item = Sketch.objects.get(title=id_title)
 
     if form.is_valid():
         comment = form.save(commit=False)
+        #useless?
         comment.save()
         bool_sent = True
+        item.comments_list.append(comment)
+        item.save()
 
-    return render(request, 'blog/sketch_comment.html', locals())
+#   return render(request, 'blog/sketch_comment.html', locals())
+    return render(request, url_template, locals())

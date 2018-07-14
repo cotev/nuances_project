@@ -6,6 +6,7 @@ from blog.models import Sketch
 from blog.models import Comment
 from blog.models import News
 
+
 class StoryAdmin(admin.ModelAdmin):
     list_display = ('title', 'author', 'date',)
     list_filter = ('title','date',)
@@ -22,7 +23,7 @@ class ContactAdmin(admin.ModelAdmin):
 
 
 class SketchAdmin(admin.ModelAdmin):
-    list_display = ('title', 'author', 'date', 'sketch',)
+    list_display = ('title', 'author', 'date', 'sketch', 'comments_list',)
     list_filter = ('date',)
 
 
