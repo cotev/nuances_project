@@ -7,15 +7,15 @@ from django.shortcuts import redirect
 
 from blog.models import News
 from blog.models import Story
-from blog.models import  StoryPage
+from blog.models import StoryPage
 from blog.models import Sketch
 from blog.forms import ContactForm
 from blog.forms import CommentForm
+from blog.forms import SketchCommentForm
 from blog.models import Comment
 
 
 def view_home(request):
-
     list_news = News.objects.order_by('-date')
 
     return render(request, 'blog/home.html', {
@@ -24,9 +24,7 @@ def view_home(request):
 
 
 def view_sketches(request):
-
     list_sketches = Sketch.objects.order_by('-date')
-
 
     return render(request, 'blog/sketches.html', {
         'list_sketches': list_sketches,
@@ -34,10 +32,9 @@ def view_sketches(request):
 
 
 def view_contact(request):
-
     form = ContactForm(request.POST or None)
 
-    if form.is_valid(): 
+    if form.is_valid():
         contact = form.save(commit=False)
         contact.date = datetime.today()
         contact.save()
@@ -47,7 +44,6 @@ def view_contact(request):
 
 
 def view_stories(request):
-    
    #list_stories = Story.objects.all() #I used to use this instruction but I have to order by the date from the most recent to the lattest.
     list_stories = Story.objects.order_by('-date')
 
@@ -62,22 +58,22 @@ def view_show_story(request, id_title):
     #ToDo : what happends when the title isn't right ? ==> make sure that can't happend.
     story = Story.objects.get(title=id_title)
     pages = story.storypage_set.all() #REMARQUE : they must not have capitals before the _set
-    
+
     return render(request, 'blog/show_story.html', {
         'story': story,
         'pages': pages,
         })
 
+
 #@ToDo : manage the else case when then form isn't valid.
 def view_comment(request,id_title, id_comment_type):
-
     #We create a CommentForm or collect the data from the form through the POST method 
     form = CommentForm(request.POST or None)
     bool_sent = False #instruction needed for the block which manages the redirect, at the end of view_comment
     if id_comment_type == 'story':
         story = Story.objects.get(title=id_title)
         list_comments = story.comment_set.all()
-        bool_story_comment = True 
+        bool_story_comment = True
         if form.is_valid():
             comment = form.save(commit=False)
             comment.story = story
@@ -106,3 +102,17 @@ def view_comment(request,id_title, id_comment_type):
             return redirect(view_sketches)
     else:
         return render(request, 'blog/comment.html', locals())
+
+
+#def view_sketch_comment(request,id_title):
+def view_sketch_comment(request):
+    form = SketchCommentForm(request.POST or None)
+    #Instruction needed for the block which manages
+    #the redirect, at the end of view_comment
+    bool_sent = False
+    if form.is_valid():
+        comment = form.save(commit=False)
+        comment.save()
+        bool_sent = True
+
+    return render(request, 'blog/sketch_comment.html', locals())

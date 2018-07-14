@@ -10,6 +10,8 @@
                 <p id="sketch_title">{{ sketch.title }}</p>
                 <img id="sketch_image" src="{{ sketch.sketch.url }}"/>
                 <a id="sketch_comment" href="{% url 'comment_sketch' sketch.title %}">Comment</a>
+                <a id="sketch_comment_bis" href="{% url 'sketch_comment' %}">Sketch Comment</a>
+
 	    </div>
     {% endfor %}
     </div>

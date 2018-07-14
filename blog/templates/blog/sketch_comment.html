@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}Comment{% endblock %}
+
+{% block content %}
+
+    {% if bool_sent %}<p id="message_sent">Your comment has been added !</p>{% endif %}
+   
+    {% comment %}
+    the bug is in this block
+    <form class="form" action="{% url 'sketch_comment' item.title %}" method="post">
+	{% csrf_token %}
+	{{ form.as_p }}
+	<input type="submit" value="Submit" />
+    </form>
+    {% endcomment %}
+    <form class="form" action="{% url 'sketch_comment' %}" method="post">
+	{% csrf_token %}
+	{{ form.as_p }}
+	<input type="submit" value="Submit" />
+    </form>
+
+{% comment %}
+    <p class="title">Comments</p>
+    {% for comment in list_comments %}
+        <div class="comment">
+        	<p class="comment_author">{{ comment.author }} :</p>
+		<p class="comment_message">{{ comment.message }}</p>
+    	</div>
+    {% endfor %}
+
+{% endcomment %}
+{% endblock %}
