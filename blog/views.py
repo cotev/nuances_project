@@ -130,6 +130,7 @@ def view_sketch_comment(request, id_type, id_title):
         bool_sent = True
         item.comments_list.append(comment)
         item.save()
+        item.save_comment(comment)
 
 #   return render(request, 'blog/sketch_comment.html', locals())
     return render(request, url_template, locals())
