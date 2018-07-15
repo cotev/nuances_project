@@ -8,13 +8,13 @@ class ItemCommonInfo(models.Model):
     type = ""
 #
 #
-#class SketchComment(models.Model):
-#    author = models.CharField(max_length=100, default='Anonymous')
-#    message = models.TextField(blank=False)
-#    date = models.DateTimeField(auto_now_add=True, auto_now=False, verbose_name="Date of comment")
-#
-#    def __def__(self):
-#        return self.author
+class SketchComment(models.Model):
+    author = models.CharField(max_length=100, default='Anonymous')
+    message = models.TextField(blank=False)
+    date = models.DateTimeField(auto_now_add=True, auto_now=False, verbose_name="Date of comment")
+
+    def __def__(self):
+        return self.author
 #
 #
 ##Let's try first to change the comment structure for sketches
