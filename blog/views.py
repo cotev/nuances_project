@@ -137,6 +137,7 @@ def view_sketch_comment(request, id_type, id_title):
     if form.is_valid():
         comment = form.save(commit=False)
         #useless?
+        comment.item = ItemCommonInfo.objects.get(title=id_title)
         comment.save()
         bool_sent = True
 
