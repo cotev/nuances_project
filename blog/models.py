@@ -5,7 +5,7 @@ class ItemCommonInfo(models.Model):
     title = models.CharField(max_length=100, default='Item')
     author = models.CharField(max_length=30, default='Cotev')
     date = models.DateTimeField(auto_now_add=True, auto_now=False, verbose_name="Date")
-    type = ""
+    item_type = ""
 
 
 class SketchComment(models.Model):
@@ -21,7 +21,7 @@ class SketchComment(models.Model):
 
 class Sketch(ItemCommonInfo):
     sketch_image = models.ImageField(upload_to="sketches/")
-    type = "Sketch"
+    item_type = "Sketch"
 
     def __str__(self):
         return self.title

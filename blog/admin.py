@@ -24,7 +24,7 @@ class ContactAdmin(admin.ModelAdmin):
 
 
 class SketchAdmin(admin.ModelAdmin):
-    list_display = ('title', 'author', 'date', 'sketch_image',)
+    list_display = ('title', 'author', 'date', 'sketch_image', 'item_type',)
     list_filter = ('date',)
 
 

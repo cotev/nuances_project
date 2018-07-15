@@ -26,9 +26,11 @@ def view_home(request):
 
 def view_sketches(request):
     list_sketches = Sketch.objects.order_by('-date')
+    item_type = list_sketches[0].item_type
 
     return render(request, 'blog/sketches.html', {
         'list_sketches': list_sketches,
+        'item.type': item_type,
         })
 
 
