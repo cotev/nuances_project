@@ -26,11 +26,9 @@ def view_home(request):
 
 def view_sketches(request):
     list_sketches = Sketch.objects.order_by('-date')
-    item_type = list_sketches[0].item_type
 
     return render(request, 'blog/sketches.html', {
         'list_sketches': list_sketches,
-        'item.type': item_type,
         })
 
 
@@ -115,14 +113,15 @@ def view_sketch_comment(request, id_type, id_title):
 #   #Instruction needed for the block which manages
 #   #the redirect, at the end of view_comment
     bool_sent = False
-    item = ItemCommonInfo.objects.get(title=id_title)
-    comments_list = item.sketchcomment_set.all()
+
+#   item = ItemCommonInfo.objects.get(title=id_title)
+#   comments_list = item.sketchcomment_set.all()
 
 #   We figure out what kind of item we comment
     if id_type == "Sketch":
-#        item = Sketch.objects.get(title=id_title)
+         item = Sketch.objects.get(title=id_title)
          url_template = 'blog/sketch_comment.html'
-#        comments_list = item.comments_list
+         comments_list = ItemCommonInfo.objects.get(title=id_title).sketchcomment_set.all()
 
 
 #   We figure out what kind of item we comment
@@ -135,14 +134,11 @@ def view_sketch_comment(request, id_type, id_title):
 #   item = Sketch.objects.get(title=id_title)
 #   item = Sketch.objects.get(title=id_title)
 
-#   if form.is_valid():
-#       comment = form.save(commit=False)
-#       #useless?
-#       comment.save()
-#       bool_sent = True
-#       item.comments_list.append(comment)
-#       item.save()
-#       item.save_comment(comment)
+    if form.is_valid():
+        comment = form.save(commit=False)
+        #useless?
+        comment.save()
+        bool_sent = True
 
-    return render(request, 'blog/sketch_comment.html', locals())
-#   return render(request, url_template, locals())
+#   return render(request, 'blog/sketch_comment.html', locals())
+    return render(request, url_template, locals())

@@ -6,7 +6,7 @@
 
     {% if bool_sent %}<p id="message_sent">Your comment has been added !</p>{% endif %}
    
-    <form class="form" action="{% url 'sketch_comment' item.type item.title %}" method="post">
+    <form class="form" action="{% url 'sketch_comment' item.item_type item.title %}" method="post">
 	{% csrf_token %}
 	{{ form.as_p }}
 	<input type="submit" value="Submit" />

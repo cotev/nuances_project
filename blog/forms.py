@@ -14,8 +14,8 @@ class CommentForm(forms.ModelForm):
 		model = Comment
 		fields = ('author', 'message',)
 
+
 class SketchCommentForm(forms.ModelForm):
 	class Meta:
 		model = SketchComment
 		fields = ('author', 'message',)
-

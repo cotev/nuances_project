@@ -5,7 +5,7 @@ class ItemCommonInfo(models.Model):
     title = models.CharField(max_length=100, default='Item')
     author = models.CharField(max_length=30, default='Cotev')
     date = models.DateTimeField(auto_now_add=True, auto_now=False, verbose_name="Date")
-    item_type = ""
+#   item_type = ""
 
 
 class SketchComment(models.Model):
@@ -13,7 +13,7 @@ class SketchComment(models.Model):
     message = models.TextField(blank=False)
     date = models.DateTimeField(auto_now_add=True, auto_now=False, verbose_name="Date of comment")
     item = models.ForeignKey('ItemCommonInfo',null=True, on_delete=models.CASCADE,)
-
+#   item = models.ForeignKey('ItemCommonInfo',null=False, on_delete=models.CASCADE,)
 
     def __def__(self):
         return self.author
