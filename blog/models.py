@@ -17,14 +17,14 @@ class SketchComment(models.Model):
 
     def __def__(self):
         return self.author
-#
-#
-#class Sketch(ItemCommonInfo):
-#    sketch_image = models.ImageField(upload_to="sketches/")
-#    type = "Sketch"
-#
-#    def __str__(self):
-#        return self.title
+
+
+class Sketch(ItemCommonInfo):
+    sketch_image = models.ImageField(upload_to="sketches/")
+    type = "Sketch"
+
+    def __str__(self):
+        return self.title
 
 
 class Story(models.Model):
