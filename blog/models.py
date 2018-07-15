@@ -1,11 +1,11 @@
 from django.db import models
 
 
-#class ItemCommonInfo(models.Model):
-#    title = models.CharField(max_length=100, default='Item')
-#    author = models.CharField(max_length=30, default='Cotev')
-#    date = models.DateTimeField(auto_now_add=True, auto_now=False, verbose_name="Date")
-#    type = ""
+class ItemCommonInfo(models.Model):
+    title = models.CharField(max_length=100, default='Item')
+    author = models.CharField(max_length=30, default='Cotev')
+    date = models.DateTimeField(auto_now_add=True, auto_now=False, verbose_name="Date")
+    type = ""
 #
 #
 #class SketchComment(models.Model):
