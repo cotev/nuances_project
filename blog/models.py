@@ -30,12 +30,8 @@ class SketchComment(models.Model):
 #Let's try first to change the comment structure for sketches
 #just to see how it works.
 class Sketch(ItemCommonInfo):
-    date = models.DateTimeField(auto_now_add=True, auto_now=False, verbose_name="Date of sketch")
     sketch = models.ImageField(upload_to="sketches/")
     type = "Sketch"
-    #I just wonder if we can instance several SketchComment for 
-    #one instance of Sketch.
-#   comment() = SketchComment()
 
     def __str__(self):
         return self.title
