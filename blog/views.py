@@ -105,8 +105,8 @@ def view_comment(request,id_title, id_comment_type):
     else:
         return render(request, 'blog/comment.html', locals())
 
-
-def view_sketch_comment(request, id_type, id_title):
+def view_sketch_comment(request, id_type):
+#def view_sketch_comment(request, id_type, id_title):
 #def view_sketch_comment(request, id_title):
 #def view_sketch_comment(request):
 #   form = SketchCommentForm(request.POST or None)
