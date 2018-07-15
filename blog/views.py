@@ -106,32 +106,32 @@ def view_comment(request,id_title, id_comment_type):
         return render(request, 'blog/comment.html', locals())
 
 
-#def view_sketch_comment(request, id_type, id_title):
-##def view_sketch_comment(request, id_title):
-##def view_sketch_comment(request):
-#    form = SketchCommentForm(request.POST or None)
-#    #Instruction needed for the block which manages
-#    #the redirect, at the end of view_comment
-#    bool_sent = False
-#
-##   We figure out what kind of item we comment
-##   if id_type == "Sketch":
-##        item = Sketch.objects.get(title=id_title)
-##        url_template = 'blog/sketch_comment.html'
-##        comments_list = item.comments_list
-#
-##   item = item_instance.objects.get(title=id_title)
-##   item = Sketch.objects.get(title=id_title)
-##   item = Sketch.objects.get(title=id_title)
-#
-#    if form.is_valid():
-#        comment = form.save(commit=False)
-#        #useless?
-#        comment.save()
-#        bool_sent = True
-#        item.comments_list.append(comment)
-#        item.save()
-#        item.save_comment(comment)
-#
-##   return render(request, 'blog/sketch_comment.html', locals())
-#    return render(request, url_template, locals())
+def view_sketch_comment(request, id_type, id_title):
+#def view_sketch_comment(request, id_title):
+#def view_sketch_comment(request):
+#   form = SketchCommentForm(request.POST or None)
+#   #Instruction needed for the block which manages
+#   #the redirect, at the end of view_comment
+#   bool_sent = False
+
+#   We figure out what kind of item we comment
+#   if id_type == "Sketch":
+#        item = Sketch.objects.get(title=id_title)
+#        url_template = 'blog/sketch_comment.html'
+#        comments_list = item.comments_list
+
+#   item = item_instance.objects.get(title=id_title)
+#   item = Sketch.objects.get(title=id_title)
+#   item = Sketch.objects.get(title=id_title)
+
+#   if form.is_valid():
+#       comment = form.save(commit=False)
+#       #useless?
+#       comment.save()
+#       bool_sent = True
+#       item.comments_list.append(comment)
+#       item.save()
+#       item.save_comment(comment)
+
+    return render(request, 'blog/sketch_comment.html', locals())
+#   return render(request, url_template, locals())
