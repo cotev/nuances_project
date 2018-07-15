@@ -8,7 +8,7 @@ from django.shortcuts import redirect
 from blog.models import News
 from blog.models import Story
 from blog.models import StoryPage
-#from blog.models import Sketch
+from blog.models import Sketch
 from blog.forms import ContactForm
 from blog.forms import CommentForm
 #from blog.forms import SketchCommentForm
@@ -24,12 +24,12 @@ def view_home(request):
         })
 
 
-#def view_sketches(request):
-#    list_sketches = Sketch.objects.order_by('-date')
-#
-#    return render(request, 'blog/sketches.html', {
-#        'list_sketches': list_sketches,
-#        })
+def view_sketches(request):
+    list_sketches = Sketch.objects.order_by('-date')
+
+    return render(request, 'blog/sketches.html', {
+        'list_sketches': list_sketches,
+        })
 
 
 def view_contact(request):
