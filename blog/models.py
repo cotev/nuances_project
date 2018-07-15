@@ -6,8 +6,8 @@ class ItemCommonInfo(models.Model):
     author = models.CharField(max_length=30, default='Cotev')
     date = models.DateTimeField(auto_now_add=True, auto_now=False, verbose_name="Date")
     type = ""
-#
-#
+
+
 class SketchComment(models.Model):
     author = models.CharField(max_length=100, default='Anonymous')
     message = models.TextField(blank=False)
