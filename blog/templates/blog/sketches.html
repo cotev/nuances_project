@@ -8,8 +8,10 @@
     {% for sketch in list_sketches %}
 	    <div class="sketch">
                 <p id="sketch_title">{{ sketch.title }}</p>
-                <img id="sketch_image" src="{{ sketch.sketch.url }}"/>
+                <img id="sketch_image" src="{{ sketch.sketch_image.url }}"/>
+		{% comment %}
                 <a id="sketch_comment" href="{% url 'comment_sketch' sketch.title %}">Comment</a>
+		{% endcomment %}
                 <a id="sketch_comment_bis" href="{% url 'sketch_comment' sketch.type sketch.title %}">Sketch Comment</a>
 
 		{% comment %}
