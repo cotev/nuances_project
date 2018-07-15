@@ -8,12 +8,12 @@ from django.shortcuts import redirect
 from blog.models import News
 from blog.models import Story
 from blog.models import StoryPage
-from blog.models import Sketch
+#from blog.models import Sketch
 from blog.forms import ContactForm
 from blog.forms import CommentForm
-from blog.forms import SketchCommentForm
+#from blog.forms import SketchCommentForm
 from blog.models import Comment
-from blog.models import ItemCommonInfo
+#from blog.models import ItemCommonInfo
 
 
 def view_home(request):
@@ -24,12 +24,12 @@ def view_home(request):
         })
 
 
-def view_sketches(request):
-    list_sketches = Sketch.objects.order_by('-date')
-
-    return render(request, 'blog/sketches.html', {
-        'list_sketches': list_sketches,
-        })
+#def view_sketches(request):
+#    list_sketches = Sketch.objects.order_by('-date')
+#
+#    return render(request, 'blog/sketches.html', {
+#        'list_sketches': list_sketches,
+#        })
 
 
 def view_contact(request):
@@ -81,12 +81,12 @@ def view_comment(request,id_title, id_comment_type):
             comment.save()
             bool_sent = True
     elif id_comment_type == 'sketch':
-        sketch = Sketch.objects.get(title=id_title)
-        list_comments = sketch.comment_set.all()
+#       sketch = Sketch.objects.get(title=id_title)
+#       list_comments = sketch.comment_set.all()
         bool_sketch_comment = True
         if form.is_valid():
             comment = form.save(commit=False)
-            comment.sketch = sketch
+#           comment.sketch = sketch
             comment.save()
             bool_sent = True
     else:
@@ -100,37 +100,38 @@ def view_comment(request,id_title, id_comment_type):
         if id_comment_type == 'story':
             return redirect(view_show_story, id_title=id_title)
         if id_comment_type == 'sketch':
-            return redirect(view_sketches)
+#           return redirect(view_sketches)
+            return redirect(view_show_story, id_title=id_title)
     else:
         return render(request, 'blog/comment.html', locals())
 
 
-def view_sketch_comment(request, id_type, id_title):
-#def view_sketch_comment(request, id_title):
-#def view_sketch_comment(request):
-    form = SketchCommentForm(request.POST or None)
-    #Instruction needed for the block which manages
-    #the redirect, at the end of view_comment
-    bool_sent = False
-
-#   We figure out what kind of item we comment
-    if id_type == "Sketch":
-         item = Sketch.objects.get(title=id_title)
-         url_template = 'blog/sketch_comment.html'
-         comments_list = item.comments_list
-
-#   item = item_instance.objects.get(title=id_title)
-#   item = Sketch.objects.get(title=id_title)
-#   item = Sketch.objects.get(title=id_title)
-
-    if form.is_valid():
-        comment = form.save(commit=False)
-        #useless?
-        comment.save()
-        bool_sent = True
-        item.comments_list.append(comment)
-        item.save()
-        item.save_comment(comment)
-
-#   return render(request, 'blog/sketch_comment.html', locals())
-    return render(request, url_template, locals())
+#def view_sketch_comment(request, id_type, id_title):
+##def view_sketch_comment(request, id_title):
+##def view_sketch_comment(request):
+#    form = SketchCommentForm(request.POST or None)
+#    #Instruction needed for the block which manages
+#    #the redirect, at the end of view_comment
+#    bool_sent = False
+#
+##   We figure out what kind of item we comment
+##   if id_type == "Sketch":
+##        item = Sketch.objects.get(title=id_title)
+##        url_template = 'blog/sketch_comment.html'
+##        comments_list = item.comments_list
+#
+##   item = item_instance.objects.get(title=id_title)
+##   item = Sketch.objects.get(title=id_title)
+##   item = Sketch.objects.get(title=id_title)
+#
+#    if form.is_valid():
+#        comment = form.save(commit=False)
+#        #useless?
+#        comment.save()
+#        bool_sent = True
+#        item.comments_list.append(comment)
+#        item.save()
+#        item.save_comment(comment)
+#
+##   return render(request, 'blog/sketch_comment.html', locals())
+#    return render(request, url_template, locals())

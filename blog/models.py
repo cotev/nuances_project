@@ -1,40 +1,30 @@
 from django.db import models
 
 
-class ItemCommonInfo(models.Model):
-    title = models.CharField(max_length=100)
-    author = models.CharField(max_length=30)
-    date = models.DateTimeField(auto_now_add=True, auto_now=False, verbose_name="Date")
-    type = ""
-    comments_list = []
-    def save_comment(self, comment):
-        self.comments_list.append(comment)
-
-#    def add_sketch_comment(author, message, date):
-#        comment = SketchComment(author=author, message=message, date=date)
-#        return comment
-
-    class Meta:
-        abstract = True
-
-
-class SketchComment(models.Model):
-    author = models.CharField(max_length=100, default='Anonymous')
-    message = models.TextField(blank=False)
-    date = models.DateTimeField(auto_now_add=True, auto_now=False, verbose_name="Date of comment")
-
-    def __def__(self):
-        return self.author
-
-
-#Let's try first to change the comment structure for sketches
-#just to see how it works.
-class Sketch(ItemCommonInfo):
-    sketch = models.ImageField(upload_to="sketches/")
-    type = "Sketch"
-
-    def __str__(self):
-        return self.title
+#class ItemCommonInfo(models.Model):
+#    title = models.CharField(max_length=100, default='Item')
+#    author = models.CharField(max_length=30, default='Cotev')
+#    date = models.DateTimeField(auto_now_add=True, auto_now=False, verbose_name="Date")
+#    type = ""
+#
+#
+#class SketchComment(models.Model):
+#    author = models.CharField(max_length=100, default='Anonymous')
+#    message = models.TextField(blank=False)
+#    date = models.DateTimeField(auto_now_add=True, auto_now=False, verbose_name="Date of comment")
+#
+#    def __def__(self):
+#        return self.author
+#
+#
+##Let's try first to change the comment structure for sketches
+##just to see how it works.
+#class Sketch(ItemCommonInfo):
+#    sketch_image = models.ImageField(upload_to="sketches/")
+#    type = "Sketch"
+#
+#    def __str__(self):
+#        return self.title
 
 
 class Story(models.Model):
@@ -73,7 +63,7 @@ class Comment(models.Model):
     message = models.TextField(blank=False)
     date = models.DateTimeField(auto_now_add=True, auto_now=False, verbose_name="Date of comment")
     story = models.ForeignKey('Story', null=True, on_delete=models.CASCADE,)
-    sketch = models.ForeignKey('Sketch', null=True, on_delete=models.CASCADE,)
+#   sketch = models.ForeignKey('Sketch', null=True, on_delete=models.CASCADE,)
 
     def __def__(self):
         return self.author
