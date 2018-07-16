@@ -1,16 +1,10 @@
-{% extends "base.html" %}
-{% block title  %}Nuances Project | Stories{% endblock %}
-{% block content %}
-    <h1 class="title"> Stories's list </h1>
-    <div class="story_list">
-    {% for story in list_stories %}
-        <p class="story">
-            <a class="story_list_link" href="{% url "show_story" story.title %}">
-                <p class="story_title">{{ story.title }}</p>
-                <img src="{{ story.cover_page.url }}"/>
-            </a>
-            <a class="comment_story" href="{% url 'comment_story' story.title %}">Comment</a>
-	</p>
-    {% endfor %}
-    </div>
+{% extends "show_items.html" %}
+{% block title  %}Stories{% endblock %}
+{% block show_item %}
+{% comment %}<div class="story">{% endcomment %}
+	    <a class="story_list_link" href="{% url "show_story" item.title %}">
+	        <p class="story_title">{{ item.title }}</p>
+	        <img src="{{ item.cover_page.url }}"/>
+	    </a>
+	    {% comment %}	</div> {% endcomment %}
 {% endblock %}

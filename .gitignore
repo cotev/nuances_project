@@ -2,6 +2,13 @@
 __pycache__
 db.sqlite3
 .DS_Store
+<<<<<<< HEAD
 media/sketches/
 media/covers/
 media/pages/
+=======
+nuances_project/settings.py
+media/sketches/
+media/covers/
+media/pages/
+>>>>>>> cleaning_dumb_idea_3

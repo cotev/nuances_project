@@ -205,3 +205,17 @@ a
     margin-right: 20vh;
     margin-bottom: 5vh;
 }
+/*-----------------------*/
+/* css for show_items.html */
+.title
+{
+    display: flex;
+    justify-content: center;
+}
+.items_list
+{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    justify-content: space-around;
+}

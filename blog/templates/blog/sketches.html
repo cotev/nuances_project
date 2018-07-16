@@ -1,16 +1,6 @@
-{% extends "base.html" %}
-
+{% extends "show_items.html" %}
 {% block title %}Sketches{% endblock %}
-
-{% block content %}
-    <h1 class="title">Sketches</h1>
-    <div class="sketch_list">
-    {% for sketch in list_sketches %}
-	    <div class="sketch">
-                <p id="sketch_title">{{ sketch.title }}</p>
-                <img id="sketch_image" src="{{ sketch.sketch.url }}"/>
-                <a id="sketch_comment" href="{% url 'comment_sketch' sketch.title %}">Comment</a>
-	    </div>
-    {% endfor %}
-    </div>
+{% block show_item %}
+	<p id="sketch_title">{{ item.title }}</p>
+	<img id="sketch_image" src="{{ item.sketch_image.url }}"/>
 {% endblock %}

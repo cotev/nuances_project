@@ -3,22 +3,8 @@
 {% block content %}
     <p id="message_contact">
         <span>Want to conctact me ? :) </span>
-        <span>Just send me a mail at ### </span> 
+        <span>Just send me a mail at contact.nuancesproject@gmail.com </span> 
         <span>See you.</span>
     </p>
-
-    {% comment %}
-    #I put in comment the following block because I'm not sure that
-    #the information given by the user are safe.
-    #I have to check it before doing anything.
-    </p>
-    {% if bool_sent %}Your message has been sent !{% endif %}
-    
-    <form class="comment" action="{% url "contact" %}" method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="Submit" />
-    </form>
-    {% endcomment %}
 
 {% endblock %}
