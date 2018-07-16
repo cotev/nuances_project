@@ -31,6 +31,7 @@ class Story(ItemCommonInfo):
 #    author = models.CharField(max_length=30)
 #    date = models.DateTimeField(auto_now_add=True, auto_now=False, verbose_name="Date of publication")
     cover_page = models.ImageField(upload_to="covers/")
+#   item_type = "Story"
 
     def __str__(self):
         return self.title
