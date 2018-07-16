@@ -10,9 +10,9 @@ from blog.models import Story
 from blog.models import StoryPage
 from blog.models import Sketch
 from blog.forms import ContactForm
-from blog.forms import CommentForm
+#from blog.forms import CommentForm
 from blog.forms import SketchCommentForm
-from blog.models import Comment
+#from blog.models import Comment
 from blog.models import ItemCommonInfo
 
 
@@ -66,46 +66,46 @@ def view_show_story(request, id_title):
         })
 
 
-#@ToDo : manage the else case when then form isn't valid.
-def view_comment(request,id_title, id_comment_type):
-    #We create a CommentForm or collect the data from the form through the POST method 
-    form = CommentForm(request.POST or None)
-    bool_sent = False #instruction needed for the block which manages the redirect, at the end of view_comment
-    if id_comment_type == 'story':
-        story = Story.objects.get(title=id_title)
-        list_comments = story.comment_set.all()
-        bool_story_comment = True
-        if form.is_valid():
-            comment = form.save(commit=False)
-            comment.story = story
-            comment.save()
-            bool_sent = True
-    elif id_comment_type == 'sketch':
-#       sketch = Sketch.objects.get(title=id_title)
-#       list_comments = sketch.comment_set.all()
-        bool_sketch_comment = True
-        if form.is_valid():
-            comment = form.save(commit=False)
-#           comment.sketch = sketch
-            comment.save()
-            bool_sent = True
-    else:
-        pass
-        #What should I do ?
-        #raise a 404 page error
+##@ToDo : manage the else case when then form isn't valid.
+#def view_comment(request,id_title, id_comment_type):
+#    #We create a CommentForm or collect the data from the form through the POST method 
+#    form = CommentForm(request.POST or None)
+#    bool_sent = False #instruction needed for the block which manages the redirect, at the end of view_comment
+#    if id_comment_type == 'story':
+#        story = Story.objects.get(title=id_title)
+#        list_comments = story.comment_set.all()
+#        bool_story_comment = True
+#        if form.is_valid():
+#            comment = form.save(commit=False)
+#            comment.story = story
+#            comment.save()
+#            bool_sent = True
+#    elif id_comment_type == 'sketch':
+##       sketch = Sketch.objects.get(title=id_title)
+##       list_comments = sketch.comment_set.all()
+#        bool_sketch_comment = True
+#        if form.is_valid():
+#            comment = form.save(commit=False)
+##           comment.sketch = sketch
+#            comment.save()
+#            bool_sent = True
+#    else:
+#        pass
+#        #What should I do ?
+#        #raise a 404 page error
+#
+#    #this block is for going back to the story/sketch page when the comment has been sent
+#    #I should see if I keep it of not | 20170214
+#    if bool_sent:
+#        if id_comment_type == 'story':
+#            return redirect(view_show_story, id_title=id_title)
+#        if id_comment_type == 'sketch':
+##           return redirect(view_sketches)
+#            return redirect(view_show_story, id_title=id_title)
+#    else:
+#        return render(request, 'blog/comment.html', locals())
 
-    #this block is for going back to the story/sketch page when the comment has been sent
-    #I should see if I keep it of not | 20170214
-    if bool_sent:
-        if id_comment_type == 'story':
-            return redirect(view_show_story, id_title=id_title)
-        if id_comment_type == 'sketch':
-#           return redirect(view_sketches)
-            return redirect(view_show_story, id_title=id_title)
-    else:
-        return render(request, 'blog/comment.html', locals())
 
-#def view_sketch_comment(request, id_type):
 def view_sketch_comment(request, id_type, id_title):
 #def view_sketch_comment(request, id_title):
 #def view_sketch_comment(request):

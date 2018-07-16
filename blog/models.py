@@ -5,7 +5,6 @@ class ItemCommonInfo(models.Model):
     title = models.CharField(max_length=100, default='Item')
     author = models.CharField(max_length=30, default='Cotev')
     date = models.DateTimeField(auto_now_add=True, auto_now=False, verbose_name="Date")
-#   item_type = ""
 
 
 class SketchComment(models.Model):
@@ -13,7 +12,6 @@ class SketchComment(models.Model):
     message = models.TextField(blank=False)
     date = models.DateTimeField(auto_now_add=True, auto_now=False, verbose_name="Date of comment")
     item = models.ForeignKey('ItemCommonInfo',null=True, on_delete=models.CASCADE,)
-#   item = models.ForeignKey('ItemCommonInfo',null=False, on_delete=models.CASCADE,)
 
     def __def__(self):
         return self.author
@@ -47,7 +45,6 @@ class StoryPage(models.Model):
         return self.page_title
 
 
-
 class Contact(models.Model):
     author = models.CharField(max_length=100)
     message = models.TextField(blank=False)
@@ -58,15 +55,15 @@ class Contact(models.Model):
         return self.author
 
 
-class Comment(models.Model):
-    author = models.CharField(max_length=100, default='Anonymous')
-    message = models.TextField(blank=False)
-    date = models.DateTimeField(auto_now_add=True, auto_now=False, verbose_name="Date of comment")
-    story = models.ForeignKey('Story', null=True, on_delete=models.CASCADE,)
-#   sketch = models.ForeignKey('Sketch', null=True, on_delete=models.CASCADE,)
-
-    def __def__(self):
-        return self.author
+#class Comment(models.Model):
+#    author = models.CharField(max_length=100, default='Anonymous')
+#    message = models.TextField(blank=False)
+#    date = models.DateTimeField(auto_now_add=True, auto_now=False, verbose_name="Date of comment")
+#    story = models.ForeignKey('Story', null=True, on_delete=models.CASCADE,)
+##   sketch = models.ForeignKey('Sketch', null=True, on_delete=models.CASCADE,)
+#
+#    def __def__(self):
+#        return self.author
 
 class News(models.Model):
     title = models.TextField(blank=True)

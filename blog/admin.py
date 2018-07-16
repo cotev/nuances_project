@@ -3,7 +3,7 @@ from blog.models import Story
 from blog.models import StoryPage
 from blog.models import Contact
 from blog.models import Sketch
-from blog.models import Comment
+#from blog.models import Comment
 from blog.models import News
 from blog.models import ItemCommonInfo
 from blog.models import SketchComment
@@ -30,9 +30,9 @@ class SketchAdmin(admin.ModelAdmin):
     list_filter = ('date',)
 
 
-class CommentAdmin(admin.ModelAdmin):
-    list_display = ('author', 'message','date', 'story',)
-    list_filter = ('date',)
+#class CommentAdmin(admin.ModelAdmin):
+#   list_display = ('author', 'message','date', 'story',)
+#   list_filter = ('date',)
 
 class ItemCommonInfoAdmin(admin.ModelAdmin):
     list_display = ('title', 'author', 'date',)
@@ -46,7 +46,7 @@ admin.site.register(Story, StoryAdmin)
 admin.site.register(StoryPage, StoryPageAdmin)
 admin.site.register(Contact, ContactAdmin)
 admin.site.register(Sketch, SketchAdmin)
-admin.site.register(Comment, CommentAdmin)
+#admin.site.register(Comment, CommentAdmin)
 admin.site.register(News)
 admin.site.register(ItemCommonInfo, ItemCommonInfoAdmin)
 admin.site.register(SketchComment, SketchCommentAdmin)

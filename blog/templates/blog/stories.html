@@ -9,7 +9,10 @@
                 <p class="story_title">{{ story.title }}</p>
                 <img src="{{ story.cover_page.url }}"/>
             </a>
+
+	    {% comment %}
             <a class="comment_story" href="{% url 'comment_story' story.title %}">Comment</a>
+	    {% endcomment %}
 	</p>
     {% endfor %}
     </div>
