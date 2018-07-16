@@ -8,6 +8,7 @@ class ItemCommonInfo(models.Model):
     class Meta:
         abstract = True
 
+
 class Item(ItemCommonInfo):
     def __def__(self):
         return self.author
@@ -44,16 +45,6 @@ class StoryPage(models.Model):
 
     def __str__(self):
         return self.page_title
-
-
-#class Contact(ItemCommonInfo):
-##   author = models.CharField(max_length=100)
-#    message = models.TextField(blank=False)
-#    email = models.EmailField()
-##   date = models.DateTimeField(auto_now_add=True, auto_now=False, verbose_name="Date of contact")
-#
-#    def __str__(self):
-#        return self.author
 
 
 class News(ItemCommonInfo):

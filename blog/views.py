@@ -22,10 +22,10 @@ def view_home(request):
 
 
 def view_sketches(request):
-    list_sketches = Sketch.objects.order_by('-date')
+    sketches_list = Sketch.objects.order_by('-date')
 
     return render(request, 'blog/sketches.html', {
-        'list_sketches': list_sketches,
+        'items_list': sketches_list,
         })
 
 
@@ -34,10 +34,10 @@ def view_contact(request):
 
 
 def view_stories(request):
-    list_stories = Story.objects.order_by('-date')
+    stories_list = Story.objects.order_by('-date')
 
     return render(request, 'blog/stories.html', {
-        'list_stories': list_stories,
+        'items_list': stories_list,
         })
 
 
@@ -53,10 +53,7 @@ def view_show_story(request, id_title):
 
 def view_comment(request, id_title):
     form = CommentForm(request.POST or None)
-#   #Instruction needed for the block which manages
-#   #the redirect, at the end of view_comment
     bool_sent = False
-
     item = Item.objects.get(title=id_title)
     comments_list = item.comment_set.all()
 
