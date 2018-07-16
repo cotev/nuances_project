@@ -25,10 +25,11 @@ class Sketch(ItemCommonInfo):
         return self.title
 
 
-class Story(models.Model):
-    title = models.CharField(max_length=100)
-    author = models.CharField(max_length=30)
-    date = models.DateTimeField(auto_now_add=True, auto_now=False, verbose_name="Date of publication")
+#class Story(models.Model):
+class Story(ItemCommonInfo):
+#    title = models.CharField(max_length=100)
+#    author = models.CharField(max_length=30)
+#    date = models.DateTimeField(auto_now_add=True, auto_now=False, verbose_name="Date of publication")
     cover_page = models.ImageField(upload_to="covers/")
 
     def __str__(self):
