@@ -1,7 +1,7 @@
 from django import forms
 from blog.models import Contact
-#rom blog.models import Comment
-from blog.models import SketchComment
+from blog.models import Comment
+#from blog.models import SketchComment
 
 class ContactForm(forms.ModelForm):
     class Meta:
@@ -9,13 +9,13 @@ class ContactForm(forms.ModelForm):
         fields = ('author','email', 'message',)
 
 
-#class CommentForm(forms.ModelForm):
-#	class Meta:
-#        model = Comment
-#        fields = ('author', 'message',)
-
-
-class SketchCommentForm(forms.ModelForm):
+class CommentForm(forms.ModelForm):
 	class Meta:
-		model = SketchComment
-		fields = ('author', 'message',)
+        model = Comment
+        fields = ('author', 'message',)
+
+
+#class SketchCommentForm(forms.ModelForm):
+#    class Meta:
+#		model = SketchComment
+#		fields = ('author', 'message',)

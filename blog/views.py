@@ -10,10 +10,10 @@ from blog.models import Story
 from blog.models import StoryPage
 from blog.models import Sketch
 from blog.forms import ContactForm
-#from blog.forms import CommentForm
-from blog.forms import SketchCommentForm
-#from blog.models import Comment
-from blog.models import ItemCommonInfo
+from blog.forms import CommentForm
+#from blog.forms import SketchCommentForm
+from blog.models import Comment
+from blog.models import Item
 
 
 def view_home(request):
@@ -106,10 +106,8 @@ def view_show_story(request, id_title):
 #        return render(request, 'blog/comment.html', locals())
 
 
-def view_sketch_comment(request, id_type, id_title):
-#def view_sketch_comment(request, id_title):
-#def view_sketch_comment(request):
-    form = SketchCommentForm(request.POST or None)
+def view_comment(request, id_type, id_title):
+    form = CommentForm(request.POST or None)
 #   #Instruction needed for the block which manages
 #   #the redirect, at the end of view_comment
     bool_sent = False
@@ -120,9 +118,10 @@ def view_sketch_comment(request, id_type, id_title):
 #   We figure out what kind of item we comment
     if id_type == "Sketch":
          item = Sketch.objects.get(title=id_title)
-         url_template = 'blog/sketch_comment.html'
-         comments_list = ItemCommonInfo.objects.get(title=id_title).sketchcomment_set.all()
+         comments_list = Item.objects.get(title=id_title).comment_set.all()
 
+    #useless ?
+    url_template = 'blog/comment.html'
 
 #   We figure out what kind of item we comment
 #   if id_type == "Sketch":
@@ -137,9 +136,8 @@ def view_sketch_comment(request, id_type, id_title):
     if form.is_valid():
         comment = form.save(commit=False)
         #useless?
-        comment.item = ItemCommonInfo.objects.get(title=id_title)
+        comment.item = Item.objects.get(title=id_title)
         comment.save()
         bool_sent = True
 
-#   return render(request, 'blog/sketch_comment.html', locals())
     return render(request, url_template, locals())

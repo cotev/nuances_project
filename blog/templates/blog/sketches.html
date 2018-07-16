@@ -12,7 +12,7 @@
 		{% comment %}
                 <a id="sketch_comment" href="{% url 'comment_sketch' sketch.title %}">Comment</a>
 		{% endcomment %}
-                <a id="sketch_comment_bis" href="{% url 'sketch_comment' sketch.item_type sketch.title %}">Sketch Comment</a>
+                <a id="sketch_comment" href="{% url 'comment' sketch.item_type sketch.title %}">Comment</a>
 		{% comment %}
 		<a id="sketch_comment_bis" href="{% url 'sketch_comment' item_type sketch.title %}">Sketch Comment</a>
 		{% endcomment %}
