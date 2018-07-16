@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class ItemCommonInfo(models.Model):
     title = models.CharField(max_length=100, default='Item')
     author = models.CharField(max_length=30, default='Cotev')

@@ -29,6 +29,10 @@ def view_sketches(request):
         })
 
 
+def view_animations(request):
+    return render(request, 'blog/animations.html', locals())
+
+
 def view_contact(request):
     return render(request, 'blog/contact.html', locals())
 

@@ -4,6 +4,7 @@ from blog import views
 urlpatterns = [
     url(r'^home/?$', views.view_home, name ='home'),
     url(r'^stories/?$', views.view_stories, name='stories'),
+    url(r'^animations/?$', views.view_animations, name='animations'),
     url(r'^story/(?P<id_title>[\w\s]*)/?$', views.view_show_story, name='show_story'),
     url(r'^sketches/?$', views.view_sketches, name='sketches'),
     url(r'^contact/?$', views.view_contact, name='contact' ),
