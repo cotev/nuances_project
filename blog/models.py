@@ -53,3 +53,10 @@ class News(ItemCommonInfo):
 
     def __str__(self):
         return self.title
+
+
+class Animation(Item):
+    url = models.URLField()
+
+    def __str__(self):
+        return self.url

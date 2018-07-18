@@ -9,8 +9,14 @@ from blog.models import StoryPage
 from blog.models import Sketch
 from blog.models import Comment
 from blog.models import Item
+from blog.models import Animation
+
 
 from blog.forms import CommentForm
+
+#Remarks :
+#Could factorized view_home, view_sketches, view_animations
+#and view stories with static views
 
 
 def view_home(request):
@@ -28,9 +34,12 @@ def view_sketches(request):
         'items_list': sketches_list,
         })
 
-
 def view_animations(request):
-    return render(request, 'blog/animations.html', locals())
+    animations_list = Animation.objects.order_by('-date')
+
+    return render(request, 'blog/animations.html', {
+                  'items_list': animations_list,
+    })
 
 
 def view_contact(request):
