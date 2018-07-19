@@ -1,15 +1,2 @@
-{% extends "base.html" %}
-{% block content %}
-	<h1 class="title">{%block item_title %}{% endblock %}</h1>
-	<div class="items_list">
-	    	{% for item in items_list %}
-			<div class="item">
-				{% block show_item %}	        
-				{% endblock%}
-	    	    		{% block comment %}	
-	    	    			<a class="comment" href="{% url 'comment' item.title %}">Comment</a>
-				{% endblock %}
-			</div>
-	    	{% endfor %}
-	</div>
-{% endblock %}
+{% extends "show.html" %}
+{% block div_class %}"item"{% endblock %}

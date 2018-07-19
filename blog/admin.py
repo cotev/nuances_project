@@ -28,6 +28,11 @@ class CommentAdmin(admin.ModelAdmin):
    list_filter = ('date',)
 
 
+class NewsAdmin(admin.ModelAdmin):
+   list_display = ('title', 'author', 'message','date',)
+   list_filter = ('date',)
+
+
 class ItemAdmin(admin.ModelAdmin):
     list_display = ('title', 'author', 'date',)
     list_filter = ('date',)
@@ -41,6 +46,6 @@ admin.site.register(Story, StoryAdmin)
 admin.site.register(StoryPage, StoryPageAdmin)
 admin.site.register(Sketch, SketchAdmin)
 admin.site.register(Comment, CommentAdmin)
-admin.site.register(News)
+admin.site.register(News, NewsAdmin)
 admin.site.register(Item, ItemAdmin)
 admin.site.register(Animation, AnimationAdmin)

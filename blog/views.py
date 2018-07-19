@@ -23,7 +23,7 @@ def view_home(request):
     list_news = News.objects.order_by('-date')
 
     return render(request, 'blog/home.html', {
-        'list_news': list_news,
+        'items_list': list_news,
         })
 
 
@@ -59,8 +59,8 @@ def view_show_story(request, id_title):
     pages = story.storypage_set.all()
 
     return render(request, 'blog/show_story.html', {
-        'story': story,
-        'pages': pages,
+        'items_list': pages,
+        'story_title': story.title,
         })
 
 

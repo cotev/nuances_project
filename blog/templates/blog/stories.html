@@ -1,10 +1,8 @@
 {% extends "show_items.html" %}
 {% block title  %}Stories{% endblock %}
 {% block show_item %}
-{% comment %}<div class="story">{% endcomment %}
-	    <a class="story_list_link" href="{% url "show_story" item.title %}">
-	        <p class="story_title">{{ item.title }}</p>
-	        <img src="{{ item.cover_page.url }}"/>
-	    </a>
-	    {% comment %}	</div> {% endcomment %}
+	<a class="item_link" href="{% url "show_story" item.title %}">
+		<p class="item_title">{{ item.title }}</p>
+		<img src="{{ item.cover_page.url }}"/>
+	</a>
 {% endblock %}
