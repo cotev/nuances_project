@@ -11,7 +11,7 @@ body
 {
     font-family: 'lmroman10';  /*'lmromanslant10';*/ /*'lmromandunh10';*/ /*'lmromandemi10';*/
     display: flex;    
-    flex-direction: column;
+    flex-direction: column; 
     min-height: 97vh;
     font-size: 25px;
 }
@@ -26,33 +26,28 @@ header
 }
 #header_title
 {
-    position: relative;
-    /* this instruction is necessary
-     * for centering the title with
-     * the content below */
-    left: 12vh; 
 }
 #container_nav_contents
 {
     display: flex;
     flex: 1; 
+    flex-direction: column;
+    justify-content: center;
+
 }
 nav
 {
     display: flex;
     flex-direction: column;
-    flex: 1;
-    justify-content: flex-start;  
+    flex: 1; 
 }
 #nav_links
 {
+
     display: flex;
-    flex-direction: column;
+    flex: 1;
     justify-content: space-around;
-    align-items: center; 
-    height: 70vh;
-    width: 25vh;
-    position: fixed; 
+    align-items: center;
 }
 #content
 {
@@ -107,6 +102,7 @@ a
     align-items: margin-left;
     margin-top: 10px;
     margin-bottom: 10px; 
+    margin-left: 20px;
 }
 
 
