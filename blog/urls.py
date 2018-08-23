@@ -1,4 +1,6 @@
 from django.conf.urls import url
+from django.contrib.sitemaps.views import sitemaps
+
 from blog import views
 
 urlpatterns = [
@@ -10,3 +12,8 @@ urlpatterns = [
     url(r'^contact/?$', views.view_contact, name='contact' ),
     url(r'^comment/(?P<id_title>[\w\s]+)/?$', views.view_comment, name='comment'),
 ]
+
+#I added this for sitemaps framework
+#but maybe it is in the nuances_project's urls.py
+path('sitemap.xml', sitemap, {'sitemaps':sitemaps},
+    name='django.contrib.sitemaps.views.sitemap')
