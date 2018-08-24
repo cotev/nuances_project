@@ -1,7 +1,9 @@
 from django.conf.urls import url
-from django.contrib.sitemaps.views import sitemaps
+from django.urls import path
+from django.contrib.sitemaps.views import sitemap
 
 from blog import views
+from blog import blog_sitemap
 
 urlpatterns = [
     url(r'^home/?$', views.view_home, name ='home'),
@@ -15,5 +17,8 @@ urlpatterns = [
 
 #I added this for sitemaps framework
 #but maybe it is in the nuances_project's urls.py
-path('sitemap.xml', sitemap, {'sitemaps':sitemaps},
+path('sitemap.xml', sitemap, {'sitemaps': blog_sitemap},
     name='django.contrib.sitemaps.views.sitemap')
+
+#path('sitemap.xml', sitemap, {'blog': sitemaps},
+#    name='django.contrib.sitemaps.views.sitemap')
