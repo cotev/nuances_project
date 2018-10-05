@@ -87,7 +87,6 @@ def view_comment(request, id_title):
     return render(request, 'blog/comment.html', locals())
 
 
-#def make_page(list, num_item, page):
 def make_page(request, list, num_item):
     page = request.GET.get('page')
     paginator = Paginator(list, num_item)

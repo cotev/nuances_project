@@ -3,7 +3,20 @@ from django.urls import path
 from django.contrib.sitemaps.views import sitemap
 
 from blog import views
-from blog import blog_sitemap
+from blog.sitemap import SketchSitemap
+from blog.sitemap import StorySitemap
+from blog.sitemap import StoryPageSitemap
+from blog.sitemap import AnimationSitemap
+from blog.sitemap import NewsSitemap
+
+
+
+sitemaps = {'sketch': SketchSitemap,
+            'story': StorySitemap,
+            'story_page': StoryPageSitemap,
+            'animation': AnimationSitemap,
+            'News': NewsSitemap,
+}
 
 urlpatterns = [
     url(r'^home/?$', views.view_home, name ='home'),
@@ -13,12 +26,6 @@ urlpatterns = [
     url(r'^sketches/?$', views.view_sketches, name='sketches'),
     url(r'^contact/?$', views.view_contact, name='contact' ),
     url(r'^comment/(?P<id_title>[\w\s]+)/?$', views.view_comment, name='comment'),
+    path('sitemap.xml', sitemap, {'sitemaps': sitemaps},
+        name='django.contrib.sitemaps.views.sitemap'),
 ]
-
-#I added this for sitemaps framework
-#but maybe it is in the nuances_project's urls.py
-path('sitemap.xml', sitemap, {'sitemaps': blog_sitemap},
-    name='django.contrib.sitemaps.views.sitemap')
-
-#path('sitemap.xml', sitemap, {'blog': sitemaps},
-#    name='django.contrib.sitemaps.views.sitemap')

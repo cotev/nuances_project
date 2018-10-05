@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 
 class ItemCommonInfo(models.Model):
@@ -30,12 +31,18 @@ class Sketch(Item):
     def __str__(self):
         return self.title
 
+    def get_absolute_url(self):
+        return reverse('sketches')
+
 
 class Story(Item):
     cover_page = models.ImageField(upload_to="covers/")
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse('show_story', args=[str(self.title)])
 
 
 class StoryPage(models.Model):
@@ -47,6 +54,9 @@ class StoryPage(models.Model):
     def __str__(self):
         return self.page_title
 
+    def get_absolute_url(self):
+        return reverse('show_story', args=[str(self.story.title)])
+
 
 class News(ItemCommonInfo):
     message = models.TextField(blank=False)
@@ -54,9 +64,15 @@ class News(ItemCommonInfo):
     def __str__(self):
         return self.title
 
+    def get_absolute_url(self):
+        return reverse('home')
+
 
 class Animation(Item):
     url = models.URLField()
 
     def __str__(self):
         return self.url
+
+    def get_absolute_url(self):
+        return reverse('animations',)
