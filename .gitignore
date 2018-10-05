@@ -3,6 +3,3 @@ __pycache__
 db.sqlite3
 .DS_Store
 nuances_project/settings.py
-media/sketches/*
-media/covers/*
-media/pages/*
