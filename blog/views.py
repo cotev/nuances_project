@@ -12,7 +12,6 @@ from blog.models import Comment
 from blog.models import Item
 from blog.models import Animation
 
-
 from blog.forms import CommentForm
 
 
@@ -26,6 +25,9 @@ def view_home(request):
         'items_list': list_news,
         })
 
+
+def view_redirect_home(request):
+    return redirect('home')
 
 def view_sketches(request):
     sketches = Sketch.objects.order_by('-date')
