@@ -1,4 +1,5 @@
 from django.contrib.sitemaps import Sitemap
+from django.urls import reverse
 from blog.models import Sketch
 from blog.models import Story
 from blog.models import StoryPage
@@ -59,3 +60,14 @@ class NewsSitemap(Sitemap):
 
     def lastmod(self, obj):
         return obj.date
+
+
+class StaticViewSitemap(Sitemap):
+    changefreq = "never"
+    priority = 0.5
+
+    def items(self):
+        return ['contact']
+
+    def location(self, item):
+        return reverse(item)

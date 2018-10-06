@@ -15,9 +15,6 @@ from blog.models import Animation
 
 from blog.forms import CommentForm
 
-#Remarks :
-#Could factorized view_home, view_sketches, view_animations
-#and view stories with static views
 
 
 def view_home(request):

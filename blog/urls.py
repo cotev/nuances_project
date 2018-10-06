@@ -8,7 +8,7 @@ from blog.sitemap import StorySitemap
 from blog.sitemap import StoryPageSitemap
 from blog.sitemap import AnimationSitemap
 from blog.sitemap import NewsSitemap
-
+from blog.sitemap import StaticViewSitemap
 
 
 sitemaps = {'sketch': SketchSitemap,
@@ -16,6 +16,7 @@ sitemaps = {'sketch': SketchSitemap,
             'story_page': StoryPageSitemap,
             'animation': AnimationSitemap,
             'News': NewsSitemap,
+            'static': StaticViewSitemap,
 }
 
 urlpatterns = [
