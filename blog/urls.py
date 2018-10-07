@@ -20,6 +20,7 @@ sitemaps = {'sketch': SketchSitemap,
 }
 
 urlpatterns = [
+    url(r'^$', views.view_redirect_home),
     url(r'^home/?$', views.view_home, name ='home'),
     url(r'^stories/?$', views.view_stories, name='stories'),
     url(r'^animations/?$', views.view_animations, name='animations'),
