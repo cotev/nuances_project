@@ -29,6 +29,7 @@ def view_home(request):
 def view_redirect_home(request):
     return redirect('home')
 
+
 def view_sketches(request):
     sketches = Sketch.objects.order_by('-date')
     sketches_list = make_page(request, sketches, 5)
